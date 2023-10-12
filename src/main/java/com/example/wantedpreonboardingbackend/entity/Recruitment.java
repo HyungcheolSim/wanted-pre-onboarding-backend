@@ -1,5 +1,6 @@
 package com.example.wantedpreonboardingbackend.entity;
 
+import com.example.wantedpreonboardingbackend.dto.RecruitmentRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,4 +31,11 @@ public class Recruitment extends Date {
     @ManyToOne
     @JoinColumn(name="company",nullable = false)
     private Company company;
+
+    public void update(RecruitmentRequest recruitmentRequest) {
+        this.position=recruitmentRequest.getPosition();
+        this.reward=recruitmentRequest.getReward();
+        this.introduction=recruitmentRequest.getIntroduction();
+        this.stack=recruitmentRequest.getStack();
+    }
 }
