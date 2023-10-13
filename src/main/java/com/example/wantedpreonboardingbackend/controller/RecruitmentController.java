@@ -18,6 +18,10 @@ public class RecruitmentController {
     public ResponseEntity<CommonResponse> getRecruitments(){
         return ResponseEntity.ok().body(new CommonResponse("채용 공고 목록 조회 성공",200,recruitmentService.getRecruitments()));
     }
+    @GetMapping("/recruitments/{id}")
+    public ResponseEntity<CommonResponse>getRecruitment(@PathVariable Long id){
+        return ResponseEntity.ok().body(new CommonResponse("채용 공고 목록 조회 성공",200,recruitmentService.getRecruitment(id)));
+    }
 
     @PostMapping("/recruitment")
     public ResponseEntity<CommonResponse> createRecruitment(@RequestBody RecruitmentRequest recruitmentRequest){

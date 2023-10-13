@@ -24,6 +24,10 @@ public class RecruitmentService {
     public List<RecruitmentResponse> getRecruitments() {
         return recruitmentRepository.findAll().stream().map(RecruitmentResponse::new).toList();
     }
+    @Transactional(readOnly = true)
+    public RecruitmentDetailResponse getRecruitment(Long id) {
+        return new RecruitmentDetailResponse(findRecruitment(id));
+    }
 
     @Transactional
     public RecruitmentDetailResponse createRecruitment(RecruitmentRequest recruitmentRequest) {
