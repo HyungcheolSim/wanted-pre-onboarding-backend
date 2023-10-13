@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @NoArgsConstructor
@@ -15,10 +16,7 @@ public class RecruitmentDetailResponse extends RecruitmentResponse{
     public RecruitmentDetailResponse(Recruitment recruitment) {
         super(recruitment);
         this.recruitInfo=recruitment.getIntroduction();
-        this.recruitmentIds=recruitment.getCompany().getRecruitments().stream().filter(rec->rec.getId()!=recruitment.getId()).map(Recruitment::getId).toList();
-
-
-        // 회사가 올린 다른 채용공고 목록private List<>
+        this.recruitmentIds=recruitment.getCompany().getRecruitments().stream().map(Recruitment::getId).filter(id-> !Objects.equals(id, recruitment.getId())).toList();
     }
 
 }
