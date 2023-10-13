@@ -3,7 +3,7 @@ package com.example.wantedpreonboardingbackend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Map;
+import java.util.List;
 
 @Entity
 @Table(name="company")
@@ -25,9 +25,9 @@ public class Company {
 
     @Column(name="nation",nullable = false)
     private String nation;
-    @Column(name="area",nullable = false)
-    private String area;
+    @Column(name="region",nullable = false)
+    private String region;
 
-//    @OneToMany(mappedBy = "recruitment")
-//    privat
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+    private List<Recruitment> Recruitments;
 }

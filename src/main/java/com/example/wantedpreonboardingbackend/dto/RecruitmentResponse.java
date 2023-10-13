@@ -14,7 +14,7 @@ public class RecruitmentResponse {
     private Long reward;
     private String stack;
     private String nation;
-    private String area;
+    private String region;
 
 
     public RecruitmentResponse(Recruitment recruitment){
@@ -24,7 +24,7 @@ public class RecruitmentResponse {
         this.reward=recruitment.getReward();
         this.stack=recruitment.getStack();
         this.nation=recruitment.getCompany().getNation();
-        this.area= recruitment.getCompany().getArea();
+        this.region= recruitment.getCompany().getRegion();
 
     }
 }
