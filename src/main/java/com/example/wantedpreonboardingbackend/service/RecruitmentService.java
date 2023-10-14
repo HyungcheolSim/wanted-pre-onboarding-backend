@@ -7,14 +7,12 @@ import com.example.wantedpreonboardingbackend.entity.Recruitment;
 import com.example.wantedpreonboardingbackend.repository.CompanyRepository;
 import com.example.wantedpreonboardingbackend.repository.RecruitmentRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class RecruitmentService {
     private final RecruitmentRepository recruitmentRepository;
