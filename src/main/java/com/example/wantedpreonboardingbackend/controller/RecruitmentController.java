@@ -2,11 +2,14 @@ package com.example.wantedpreonboardingbackend.controller;
 
 import com.example.wantedpreonboardingbackend.dto.CommonResponse;
 import com.example.wantedpreonboardingbackend.dto.RecruitmentRequest;
+import com.example.wantedpreonboardingbackend.dto.RecruitmentResponse;
 import com.example.wantedpreonboardingbackend.service.RecruitmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,8 +19,15 @@ public class RecruitmentController {
 
     @GetMapping("/recruitments")
     public ResponseEntity<CommonResponse> getRecruitments(){
-        return ResponseEntity.ok().body(new CommonResponse("채용 공고 목록 조회 성공",200,recruitmentService.getRecruitments()));
+        //return ResponseEntity.ok().body(new CommonResponse("채용 공고 목록 조회 성공",200, search==null?recruitmentService.getRecruitments():recruitmentService.getRecruitmentBySearchKeyword(search)));
+        return ResponseEntity.ok().body(new CommonResponse("채용 공고 목록 조회 성공",200, recruitmentService.getRecruitments()));
     }
+    @GetMapping("/recruitment")
+    public ResponseEntity<CommonResponse> getRecruitmentSearch(@RequestParam(required = false) String search){
+        List<RecruitmentResponse> result=search==null?recruitmentService.getRecruitments():recruitmentService.getRecruitmentBySearchKeyword(search);
+        return ResponseEntity.ok().body(new CommonResponse("채용 공고 검색 성공",200, result));
+    }
+
     @GetMapping("/recruitments/{id}")
     public ResponseEntity<CommonResponse>getRecruitment(@PathVariable Long id){
         return ResponseEntity.ok().body(new CommonResponse("채용 공고 목록 조회 성공",200,recruitmentService.getRecruitment(id)));

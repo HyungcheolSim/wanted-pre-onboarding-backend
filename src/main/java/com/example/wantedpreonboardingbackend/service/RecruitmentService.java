@@ -52,4 +52,8 @@ public class RecruitmentService {
     private Recruitment findRecruitment(Long id){
         return recruitmentRepository.findById((id)).orElseThrow(()->new IllegalArgumentException("채용공고가 존재하지 않습니다."));
     }
+
+    public List<RecruitmentResponse> getRecruitmentBySearchKeyword(String search) {
+        return recruitmentRepository.findByIntroductionContains(search).stream().map(RecruitmentResponse::new).toList();
+    }
 }

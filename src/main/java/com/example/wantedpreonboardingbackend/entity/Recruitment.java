@@ -29,7 +29,7 @@ public class Recruitment extends Date {
     private String stack;
 
     @ManyToOne
-    @JoinColumn(name="company",nullable = false)
+    @JoinColumn(name="company_id",nullable = false)
     private Company company;
 
     public void update(RecruitmentRequest recruitmentRequest) {
