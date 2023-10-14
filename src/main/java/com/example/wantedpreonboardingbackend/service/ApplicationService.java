@@ -9,6 +9,7 @@ import com.example.wantedpreonboardingbackend.repository.MemberRepository;
 import com.example.wantedpreonboardingbackend.repository.RecruitmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +18,7 @@ public class ApplicationService {
     private final RecruitmentRepository recruitmentRepository;
     private final MemberRepository memberRepository;
 
+    @Transactional
     public void applyRecruitment(ApplicationRequest applicationRequest) {
         Recruitment recruitment=recruitmentRepository.findById(applicationRequest.getRecruitmentId()).orElseThrow(()->new IllegalArgumentException("채용공고가 존재하지 않습니다."));
         Member member= memberRepository.findById(applicationRequest.getMemberId()).orElseThrow(()->new IllegalArgumentException("사용자가 존재하지 않습니다."));
@@ -26,7 +28,4 @@ public class ApplicationService {
         Application application=Application.builder().recruitment(recruitment).member(member).build();
         applicationRepository.save(application);
     }
-
-    //등록
-
 }
