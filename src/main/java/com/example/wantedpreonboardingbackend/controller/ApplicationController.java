@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ApplicationController {
     private final ApplicationService applicationService;
-    //지원
+
     @PostMapping("/application")
-    public ResponseEntity<CommonResponse> applyRecuritment(@RequestBody ApplicationRequest applicationRequest){
+    public ResponseEntity<CommonResponse> applyRecruitment(@RequestBody ApplicationRequest applicationRequest) {
         applicationService.applyRecruitment(applicationRequest);
-        return ResponseEntity.ok().body(new CommonResponse("채용공고 지원 성공!",200));
+        return ResponseEntity.ok().body(new CommonResponse("채용공고 지원 성공!", 200));
     }
 }

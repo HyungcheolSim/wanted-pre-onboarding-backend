@@ -15,9 +15,9 @@ public class CommonResponse {
     private Integer statusCode;
     private Object data;
 
-    public CommonResponse(String message,Integer status){
-        this.message=message;
-        this.statusCode=status;
-        this.data=null;
+    public CommonResponse(String message, Integer status) {
+        this.message = message;
+        this.statusCode = status;
+        this.data = null;
     }
 }

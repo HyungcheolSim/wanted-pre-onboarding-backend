@@ -12,16 +12,15 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class Date {
+public abstract class Timestamp {
 
     @CreatedDate
-    @Column(name="created_date", updatable = false)
+    @Column(name = "created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(name="last_modified_date")
+    @Column(name = "last_modified_date")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime modifiedAt;
-
 }

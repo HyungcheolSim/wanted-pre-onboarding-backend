@@ -24,6 +24,11 @@ public class RecruitmentService {
     }
 
     @Transactional(readOnly = true)
+    public List<RecruitmentResponse> getRecruitmentsWithCompanyIncludeKeyword(String keyword) {
+        return recruitmentRepository.findAllWithCompanyUsingFetchJoin(keyword).stream().map(RecruitmentResponse::new).toList();
+    }
+
+    @Transactional(readOnly = true)
     public RecruitmentDetailResponse getRecruitment(Long id) {
         return new RecruitmentDetailResponse(findRecruitment(id));
     }
@@ -56,9 +61,5 @@ public class RecruitmentService {
 
     private Recruitment findRecruitment(Long id) {
         return recruitmentRepository.findById((id)).orElseThrow(() -> new IllegalArgumentException("채용공고가 존재하지 않습니다."));
-    }
-
-    public List<RecruitmentResponse> getRecruitmentBySearchKeyword(String search) {
-        return recruitmentRepository.findAllWithCompanyUsingFetchJoin(search).stream().map(RecruitmentResponse::new).toList();
     }
 }

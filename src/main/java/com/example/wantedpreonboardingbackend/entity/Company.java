@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name="company")
+@Table(name = "company")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -14,18 +14,18 @@ import java.util.List;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="company_id")
+    @Column(name = "company_id")
     private Long id;
 
-    @Column(name="company_name",nullable = false,length = 32)
+    @Column(name = "company_name", nullable = false, length = 32)
     private String name;
 
-    @Column(name="company_introduction")
+    @Column(name = "company_introduction")
     private String introduction;
 
-    @Column(name="nation",nullable = false)
+    @Column(name = "nation", nullable = false)
     private String nation;
-    @Column(name="region",nullable = false)
+    @Column(name = "region", nullable = false)
     private String region;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)

@@ -17,14 +17,14 @@ public class RecruitmentResponse {
     private String region;
 
 
-    public RecruitmentResponse(Recruitment recruitment){
-        this.id=recruitment.getId();
-        this.companyName=recruitment.getCompany().getName();
-        this.position=recruitment.getPosition();
-        this.reward=recruitment.getReward();
-        this.stack=recruitment.getStack();
-        this.nation=recruitment.getCompany().getNation();
-        this.region= recruitment.getCompany().getRegion();
+    public RecruitmentResponse(Recruitment recruitment) {
+        this.id = recruitment.getId();
+        this.companyName = recruitment.getCompany().getName();
+        this.position = recruitment.getPosition();
+        this.reward = recruitment.getReward();
+        this.stack = recruitment.getStack();
+        this.nation = recruitment.getCompany().getNation();
+        this.region = recruitment.getCompany().getRegion();
 
     }
 }
