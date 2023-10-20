@@ -6,8 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RecruitmentRepository extends JpaRepository<Recruitment, Long> {
     @Query("SELECT distinct r From Recruitment r join fetch r.company WHERE CONCAT_WS('',r.introduction,r.position,r.stack,r.company.name,r.company.nation,r.company.introduction,r.company.region) Like %:keyword%")
     List<Recruitment> findAllWithCompanyUsingFetchJoin(@Param("keyword") String keyword);
+
+    @Query("SELECT DISTINCT r From Recruitment r join fetch r.company")
+    List<Optional<Recruitment>> fetchAll();
 }
